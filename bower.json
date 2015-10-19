@@ -1,0 +1,37 @@
+{
+  "name": "chrono",
+  "description": "Gerenciador de planos de estudos para estudantes autodidatas.",
+  "main": "web/index.php",
+  "authors": [
+    "Jonathan Souza <jonathan.ralison@gmail.com>",
+    "Charles Souza <charlessalessouzajr@gmail.com>",
+    "Emanuel Lucena <elucena94@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "plano",
+    "estudo",
+    "cronograma",
+    "agenda",
+    "exame",
+    "prova",
+    "concurso",
+    "programa"
+  ],
+  "homepage": "http://chrono.jralison.com",
+  "moduleType": [
+    "globals"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "open-iconic": "~1.1.1",
+    "normalize-css": "~3.0.3"
+  }
+}

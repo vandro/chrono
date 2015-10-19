@@ -1,9 +1,18 @@
+# Estrutura de arquivos
+# =========================
 web/assets/*
 !web/assets/.gitkeep
 app/runtime/*
 !app/runtime/.gitkeep
-web/vendors/*
-!web/vendors/.gitkeep
+web/vendor/*
+!web/vendor/.gitkeep
+web/build/*
+!web/build/.gitkeep
+
+# Node
+# =========================
+node_modules/
+.sass-cache/
 
 # Netbeans
 # =========================
@@ -55,3 +64,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+/app/configs/database.php
