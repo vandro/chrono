@@ -21,11 +21,11 @@ class XController extends CController {
     public function init() {
         date_default_timezone_set(Yii::app()->timeZone);
 
-        $this->clientScript = & Yii::app()->clientScript;
-        $this->session = & Yii::app()->session;
-        $this->request = & Yii::app()->request;
-        $this->user = & Yii::app()->user;
-        $this->authManager = & Yii::app()->authManager;
+        $this->clientScript =& Yii::app()->clientScript;
+        $this->session =& Yii::app()->session;
+        $this->request =& Yii::app()->request;
+        $this->user =& Yii::app()->user;
+        $this->authManager =& Yii::app()->authManager;
 
         return parent::init();
     }
