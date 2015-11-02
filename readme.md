@@ -5,5 +5,7 @@ Aplicativo desenvolvido pela equipe Chrono (Cronograma Virtual) como pré-requis
 ## Equipe
 
 Jonathan Souza (@jralison)
+
 Charles Souza
+
 Emanuel Lucena (@EmanuelLucena)
