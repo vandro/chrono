@@ -245,7 +245,7 @@ background:  no-repeat center right;
 							<div class="menu-footer-menu-container"><ul id="menu-footer-menu" class="menu">
 							
 <li id="menu-item-2140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2140">
-<a href="http://www.google.com">Notas de Estudo</a></li>
+<a href="file:///C:/Users/Emanuel/Documents/GitHub/chrono/web/notasdeestudo.php">Notas de Estudo</a></li>
 </div>						</nav>
 						<!-- /navigation -->				
 					</div>			
