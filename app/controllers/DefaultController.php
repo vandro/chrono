@@ -21,5 +21,4 @@ class DefaultController extends XController {
         $this->layout = 'off';
         $this->render('error');
     }
-
 }

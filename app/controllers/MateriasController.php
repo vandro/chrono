@@ -1,27 +1,51 @@
 <?php
 
 /**
+ * Description of UsuarioController
  *
- * @author Jonathan Souza <jonathan.ralison@gmail.com>
+ * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
-class MateriasController extends XController {
+class MateriasController {
+    
+    public function actionListar() {
 
-    public function actionIndex() {
-        $model = new Materia;
-        
-        if ($this->request->isPostRequest) {
-            $model->attributes = $this->request->getPost('Materia', []);
-            if ($model->save()) {
-                $this->redirect(['materias/index']);
-            }
-        }
-        
-        /**
-         * Lista de matérias já cadastradas no banco de dados.
-         */
-        $materias = Materia::model()->findAll(['order' => 'titulo']);
-        
-        $this->render('index', compact('model', 'materias'));
+        $listarMateria = Materia::model()->findAll();
+        $this->render('listarMateria', [
+            'materia' => $listarMateria
+        ]);
     }
 
+    public function actionApagar($id) {
+
+        Materia::model()->deleteByPk($id);
+    }
+    
+    public function actionEditar($id) {
+
+        if ($this->request->isPost) {
+
+            $editarMateria = Topico::model()->findByPk($id);
+            $editarMateria->topico = $this->request->getPost('topico');
+            $editarMateria->save();
+        } else {
+            $this->render('formEditarMateria');
+        }
+    }
+    
+    public function actionAbrir($id) {
+
+        $abrirMateria = Materia::model()->findByPk($id);
+        $this->render('formEditarMateria', [
+            'materia' => $abrirMateria
+        ]);
+    }
+    
+    public function actionCadastrar() {
+
+        if ($this->request->isPost) {
+            $cadastrarMateria = new Materia;
+            $cadastrarMateria->topico = $this->request->getPost('materia');
+            $cadastrarMateria->save();
+        }
+    }
 }
