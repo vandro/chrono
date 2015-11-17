@@ -21,7 +21,7 @@ $nome         = $_POST["nome"];
 $email        = $_POST["email"];
 $data         = "{$_POST["ano"]}-{$_POST["mes"]}-{$_POST["dia"]}";
 $sexo         = $_POST["sexo"];
-//if e else simplificado, verifico se foi escolhido alguma preferencia e crio um array
+//if e else simplificado
 $login        = $_POST["login"];
 $senha        = $_POST["senha"];
 
