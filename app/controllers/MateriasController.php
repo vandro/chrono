@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of UsuarioController
+ * Description of MateriaController
  *
  * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
@@ -24,9 +24,9 @@ class MateriasController {
 
         if ($this->request->isPost) {
 
-            $editarMateria = Topico::model()->findByPk($id);
-            $editarMateria->topico = $this->request->getPost('topico');
-            $editarMateria->save();
+            $editarMateria = Materia::model()->findByPk($id);
+            $editarMateria-> materia = $this->request->getPost('materia');
+            $editarMateria-> save();
         } else {
             $this->render('formEditarMateria');
         }
@@ -44,8 +44,8 @@ class MateriasController {
 
         if ($this->request->isPost) {
             $cadastrarMateria = new Materia;
-            $cadastrarMateria->topico = $this->request->getPost('materia');
-            $cadastrarMateria->save();
+            $cadastrarMateria-> materia = $this->request->getPost('materia');
+            $cadastrarMateria-> save();
         }
     }
 }

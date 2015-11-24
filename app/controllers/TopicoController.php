@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Description of UsuarioController
+ * Description of TopicoController
  *
  * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
@@ -45,7 +45,7 @@ class TopicoController {
         if ($this->request->isPost) {
             $cadastrarTopico = new Topico;
             $cadastrarTopico->topico = $this->request->getPost('topico');
-            $cadastrarUsuario->save();
+            $cadastrarTopico->save();
         }
     }
 

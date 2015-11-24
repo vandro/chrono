@@ -1,16 +1,43 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of AgendaController
  *
- * @author Emanuel
+ * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
 class AgendaController {
-    //put your code here
+    
+        public function actionApagar($id) {
+
+        Agenda::model()->deleteByPk($id);
+    }
+    
+    public function actionEditar($id) {
+
+        if ($this->request->isPost) {
+
+            $editarAgenda = Agenda::model()->findByPk($id);
+            $editarAgenda-> agenda = $this->request->getPost('agenda');
+            $editarAgenda-> save();
+        } else {
+            $this->render('formEditarAgenda');
+        }
+    }
+    
+    public function actionAbrir($id) {
+
+        $abrirAgenda = Agenda::model()->findByPk($id);
+        $this->render('formEditarAgenda', [
+            'agenda' => $abrirAgenda
+        ]);
+    }
+    
+    public function actionCadastrar() {
+
+        if ($this->request->isPost) {
+            $cadastrarAgenda = new Agenda;
+            $cadastrarAgenda-> agenda = $this->request->getPost('agenda');
+            $cadastrarAgenda->save();
+        }
+    }
 }

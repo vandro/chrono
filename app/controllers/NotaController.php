@@ -1,16 +1,51 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of NotaController
  *
- * @author Emanuel
+ * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
 class NotaController {
-    //put your code here
+    
+    public function actionListar() {
+
+        $listarNota = Nota::model()->findAll();
+        $this->render('listarNota', [
+            'nota' => $listarNota
+        ]);
+    }
+
+    public function actionApagar($id) {
+
+        Nota::model()->deleteByPk($id);
+    }
+    
+    public function actionEditar($id) {
+
+        if ($this->request->isPost) {
+
+            $editarNota = Nota::model()->findByPk($id);
+            $editarNota-> nota = $this->request->getPost('nota');
+            $editarNota-> save();
+        } else {
+            $this->render('editarNota');
+        }
+    }
+    
+    public function actionAbrir($id) {
+
+        $abrirNota = Nota::model()->findByPk($id);
+        $this->render('editarNota', [
+            'nota' => $abrirNota
+        ]);
+    }
+    
+    public function actionCadastrar() {
+
+        if ($this->request->isPost) {
+            $cadastrarNota = new Nota;
+            $cadastrarNota-> nota = $this->request->getPost('nota');
+            $cadastrarNota->save();
+        }
+    }
 }
