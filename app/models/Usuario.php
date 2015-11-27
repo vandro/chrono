@@ -18,6 +18,7 @@
 class Usuario extends XModel {
 
     public $tableName = 'usuarios';
+    public $senha_confirma;
 
     /**
      * Retorna uma instância deste modelo.
@@ -42,10 +43,36 @@ class Usuario extends XModel {
         ];
     }
 
+    /**
+     * Define as regras de validação para este objeto.
+     * @return array
+     */
     public function rules() {
         return [
-            ['email', 'email'],
+            ['pnome,snome,email,senha', 'filter', 'filter' => 'trim'],
+            ['pnome,snome,email,senha', 'required'],
+            ['email', 'email', 'message' => 'Informe um e-mail válido.'],
+            ['email', 'unique', 'message' => 'O e-mail informado já está cadastrado.'],
+            ['senha', 'length', 'min' => 5, 'tooShort' => 'Informe uma senha com, no mínimo, 5 caracteres.', 'skipOnError' => true],
+            ['senha', 'compare', 'compareAttribute' => 'senha_confirma', 'message' => 'A confirmação de senha não confere.', 'skipOnError' => true],
         ];
+    }
+
+    public function attributeLabels() {
+        return [
+            'pnome' => 'Primeiro nome',
+            'snome' => 'Segundo nome',
+            'email' => 'E-mail',
+            'senha' => 'Senha',
+            'senha_confirma' => 'Confirmação de senha',
+        ];
+    }
+
+    protected function beforeSave() {
+        if (isset($this->senha)) {
+            $this->senha = CPasswordHelper::hashPassword($this->senha);
+        }
+        return parent::beforeSave();
     }
 
 }
