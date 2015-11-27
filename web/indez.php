@@ -121,7 +121,7 @@ background:  no-repeat center right;
 								</div>
 							</div>
 														<div class="button-wrap left">
-								<a href="http://www.google.com" class="button">
+                                                                                                                    <a href="indez.php" class="button">
 									<span class="button-icon register"></span>Cadastrar								</a>
 							</div>
 																			</div>

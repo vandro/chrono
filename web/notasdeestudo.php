@@ -167,36 +167,9 @@ background: url("/wp-content/curso-completo.png") no-repeat center right;
 	</div>
 </div>
 <div class="user-description">
-	<form action="http://www.chrono.com/profile/emanuellucena17/" class="formatted-form" method="POST">
-		<div class="message">
-					</div>
-		<div class="sixcol column">
-			<div class="field-wrapper">
-				<input type="text" name="first_name" size="30" value="Emanuel Silva de" placeholder="Primeiro Nome" />
-			</div>
-		</div>
-		<div class="sixcol column last">
-			<div class="field-wrapper">
-				<input type="text" name="last_name" size="30" value="Lucena" placeholder="Sobrenome" />
-			</div>
-		</div>				
-		<div class="clear"></div>
-				<div class="user-fields">
-			<div class="sixcol column ">
-			<div class="field-wrapper">
-			<input type="text" id="cidadeestado" name="cidadeestado" value="João Pessoa/Paraíba" placeholder="Cidade/Estado"  />
-			</div></div>
-			<div class="sixcol column last">
-			<div class="field-wrapper">
-			<input type="text" id="ano-de-nascimento" name="ano-de-nascimento" value="1994" placeholder="Ano de Nascimento"  />
-			</div></div>
 			<div class="clear"></div>
 			<div class="sixcol column ">
-			<div class="select-field">
-			<select id="sexo" name="sexo" >
-			<option value="0" >Sexo</option>
-			<option value="1" selected="selected">Masculino</option>
-			<option value="2" > Feminino</option></select></div></div>		</div>
+	
 				<div>
 					
 <INPUT TYPE="radio" NAME="Máteria" VALUE="Fácil">Fácil
