@@ -84,12 +84,12 @@ background: url("/wp-content/curso-completo.png") no-repeat center right;
 				s.parentNode.insertBefore(wf, s);
 			})();
 			</script></head>
-<body class="archive author author-emanuellucena17 author-70362 logged-in">
+<body>
 	<div class="site-wrap">
 		<div class="header-wrap">
 			<header class="site-header">
 				<div class="row">
-					<div class="site-logo left"><a href="http://www.google.com/" rel="home">
+					<div class="site-logo left"><a href="http://www.chrono.com/" rel="home">
 							 Chrono 
 						</a>
 							

@@ -68,7 +68,7 @@ background:  no-repeat center right;
 			<header class="site-header">
 				<div class="row">
 					<div class="site-logo left">
-						<a href="http://www.google.com/" rel="home">
+						<a href="indez.php" rel="home">
 							 Chrono 
 						</a>
 					</div>
@@ -141,7 +141,7 @@ background:  no-repeat center right;
 					<nav class="header-navigation right">
 						<div class="menu"><ul id="menu-main-menu" class="menu">
 						<li id="menu-item-2137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2137">
-						<a href="http://www.google.com">Home</a></li>
+						<a href="indez.php">Home</a></li>
 <li id="menu-item-2143" class="menu-item menu-item-type-taxonomy menu-item-object-course_category menu-item-has-children menu-item-2143">
 <a href="http://www.google.com">Agenda</a>
 <ul class="sub-menu">
@@ -155,7 +155,7 @@ background:  no-repeat center right;
 </ul></div>						
 						<div class="select-menu">
 							<span></span>
-							<select><option value="http://www.google.com/">Home</option>
+							<select><option value="indez.php">Home</option>
 							<option value="http://www.google.com">Cadastrar Agenda</option>
 							
 							<option value="http://www.google.com">Chrono</option></select>							
