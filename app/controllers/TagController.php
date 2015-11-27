@@ -44,8 +44,15 @@ class TagController {
 
         if ($this->request->isPostRequest) {
             $cadastrarTag = new Tag;
-            $cadastrarTag-> tag = $this->request->getPost('tag');
-            $cadastrarTag-> save();
+            $cadastrarTag-> texto = $this->request->getPost('texto');
+            $cadastrarTag-> cor = $this->request->getPost('cor');
+            $cadastrarTag-> usuario_id = $this-> user-> id;
+            if ($cadastrarTag-> save()){
+                $this->user->setFlash('success', 'Esta tag foi criada com sucesso.');
+                $this->redirect(['tag/novaTag']);
+            } else{
+                $this->user->setFlash('error', 'Error ao cadastrar esta tag, verifique se está tudo correto!');
+            }
         }
     }
 }

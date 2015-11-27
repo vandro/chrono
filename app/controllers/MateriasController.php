@@ -44,9 +44,15 @@ class MateriasController {
 
         if ($this->request->isPostRequest) {
             $cadastrarMateria = new Materia;
-            $materia->titulo = $this->request->getPost('titulo');
-            $materia->usuario_id = $this-> user-> id;
-            $cadastrarMateria-> save();
+            $materia-> titulo = $this->request->getPost('titulo');
+            $materia-> usuario_id = $this-> user-> id;
+            $materia-> dt_criacao = date('Y-m-d');
+            if ($cadastrarMateria-> save()){
+                $this->user->setFlash('success', 'Esta materia foi criada com sucesso.');
+                $this->redirect(['mateira/novaMateria']);
+            } else{
+                $this->user->setFlash('error', 'Error ao cadastrar esta materia, verifique se está tudo correto!');
+            }
         }
     }
 }

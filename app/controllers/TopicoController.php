@@ -19,7 +19,7 @@ class TopicoController {
 
         Topico::model()->deleteByPk($id);
     }
-    
+
     public function actionEditar($id) {
 
         if ($this->request->isPostRequest) {
@@ -31,7 +31,7 @@ class TopicoController {
             $this->render('formEditarTopico');
         }
     }
-    
+
     public function actionAbrir($id) {
 
         $abrirTopico = Topico::model()->findByPk($id);
@@ -39,13 +39,22 @@ class TopicoController {
             'topico' => $abrirTopico
         ]);
     }
-    
+
     public function actionCadastrar() {
 
         if ($this->request->isPostRequest) {
             $cadastrarTopico = new Topico;
-            $cadastrarTopico->topico = $this->request->getPost('topico');
-            $cadastrarTopico->save();
+            $cadastrarTopico-> materia_id = $this->request->getPost('');
+            $cadastrarTopico-> titulo = $this->request->getPost('titulo');
+            $cadastrarTopico-> dif_esperada = $this->request->getPost('dif_esperada');
+            $cadastrarTopico-> dif_encontrada = $this->request->getPost('dif_encontrada');
+            $cadastrarTopico-> dt_criacao = date('Y-m-d');
+            if ($cadastrarTopico->save()) {
+                $this->user->setFlash('success', 'Este topico foi criado com sucesso.');
+                $this->redirect(['topico/novoTopico']);
+            } else { 
+                $this->user->setFlash('error', 'Error ao cadastrar este topico, verifique se está tudo correto!');
+            }
         }
     }
 
