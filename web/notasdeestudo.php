@@ -197,6 +197,12 @@ background: url("/wp-content/curso-completo.png") no-repeat center right;
 			<option value="0" >Sexo</option>
 			<option value="1" selected="selected">Masculino</option>
 			<option value="2" > Feminino</option></select></div></div>		</div>
+				<div>
+					
+<INPUT TYPE="radio" NAME="Máteria" VALUE="Fácil">Fácil
+<INPUT TYPE="radio" NAME="Máteria" VALUE="Médio">Médio
+<INPUT TYPE="radio" NAME="Máteria" VALUE="Difícil">Difícil
+				</div>
 				<div id="wp-description-wrap" class="wp-core-ui wp-editor-wrap tmce-active"><link rel='stylesheet' id='dashicons-css'  href='http://www.chrono.com/wp-includes/css/dashicons.min.css?ver=3.9.2' type='text/css' media='all' />
 <link rel='stylesheet' id='editor-buttons-css'  href='http://www.chrono.com' type='text/css' media='all' />
 <div id="wp-description-editor-container" class="wp-editor-container"><textarea class="wp-editor-area" rows="10" autocomplete="off" cols="40" name="description" id="description"></textarea></div>
