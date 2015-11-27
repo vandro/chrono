@@ -30,4 +30,10 @@ class XController extends CController {
         return parent::init();
     }
 
+    protected function desligarLog() {
+        foreach (Yii::app()->log->routes as $log) {
+            $log->enabled = false;
+        }
+    }
+
 }

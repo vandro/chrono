@@ -63,6 +63,7 @@ class UsuarioController extends XController {
             }
         }
 
+        $this->desligarLog();
         $this->render('form_cadastro', compact('usuario'));
     }
 

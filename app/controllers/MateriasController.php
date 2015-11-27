@@ -5,10 +5,10 @@
  *
  * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
-class MateriasController {
+class MateriasController extends XController {
     
     public function actionListar() {
-
+        $this->desligarLog();
         $listarMateria = Materia::model()->findAll();
         $this->render('listarMateria', [
             'materia' => $listarMateria

@@ -7,9 +7,7 @@
 class DefaultController extends XController {
 
     public function actionIndex() {
-        foreach (Yii::app()->log->routes as $log) {
-            $log->enabled = false;
-        }
+        $this->desligarLog();
         $this->layout = 'off';
         $this->renderText('<div class="appname">Chr<span class="oi" data-glyph="clock"></span>no</div>');
     }
