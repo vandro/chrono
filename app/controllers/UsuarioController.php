@@ -24,10 +24,11 @@ class UsuarioController extends XController {
             $editarUsuario->snome = $this->request->getPost('snome');
             $editarUsuario->email = $this->request->getPost('email');
             $editarUsuario->senha = $this->request->getPost('senha');
-            $editarUsuario->save();
-        } else {
-            $this->render('formEditar');
+            if ($editarUsuario->save()){
+                $this->user->setFlash('success', 'Sua atualização foi realizada com sucesso.');
+            }
         }
+        $this->render('formEditar');
     }
 
     public function actionApagar($id) {
@@ -46,16 +47,20 @@ class UsuarioController extends XController {
     public function actionCadastrar() {
 
         if ($this->request->isPost) {
-            $cadastrarUsuario = new Usuario;
-            $cadastrarUsuario->pnome = $this->request->getPost('pnome');
-            $cadastrarUsuario->snome = $this->request->getPost('snome');
-            $cadastrarUsuario->email = $this->request->getPost('email');
-            $cadastrarUsuario->senha = $this->request->getPost('senha');
-            $cadastrarUsuario->dt_criacao = date('Y-m-d');
-            $cadastrarUsuario->save();
-        } else {
-            $this->render('formEditar');
+            $usuario = new Usuario;
+            $usuario->pnome = $this->request->getPost('pnome');
+            $usuario->snome = $this->request->getPost('snome');
+            $usuario->email = $this->request->getPost('email');
+            $usuario->senha = $this->request->getPost('senha');
+            $usuario->dt_criacao = date('Y-m-d');
+            if ($usuario->save()) {
+                $this->user->setFlash('success', 'Seu cadastro foi realizado com sucesso.');
+                $this->redirect(['usuario/login']);
+            } else {
+                $this->user->setFlash('error', 'Seu cadastro não foi realizado com sucesso, verifique se está tudo correto!');
+            }
         }
+        $this->render('formEditar');
     }
 
 }

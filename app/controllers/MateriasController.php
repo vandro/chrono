@@ -44,7 +44,8 @@ class MateriasController {
 
         if ($this->request->isPost) {
             $cadastrarMateria = new Materia;
-            $cadastrarMateria-> materia = $this->request->getPost('materia');
+            $materia->titulo = $this->request->getPost('titulo');
+            $materia->usuario_id = $this-> user-> id;
             $cadastrarMateria-> save();
         }
     }
