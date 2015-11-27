@@ -1,0 +1,226 @@
+@import '_cores';
+
+::selection {
+    background-color: rgba(#e8eff6, .7);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Maven Pro', 'Raleway', 'Roboto', 'Arial', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #434343;
+    margin-left: 20rem;
+    transition: ease 500ms;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 1.5em; // Relativo ao tamanho da fonte do cabeçalho
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Comfortaa', 'Arial', sans-serif;
+    font-weight: 300;
+}
+
+h4, h5, h6 {
+    font-family: 'Maven Pro', 'Arial', sans-serif;
+    font-weight: 500;
+}
+
+h6 {
+    font-weight: 400;
+}
+
+table {
+    td.collapsing,
+    th.collapsing {
+        width: 1%;
+    }
+}
+
+aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: 20rem;
+    height: auto;
+    z-index: 1000;
+
+    background-color: $corprimaria;
+    color: #ffffff;
+
+    padding: 1rem;
+    transition: ease 500ms;
+
+    & > header {
+        display: block;
+        text-align: center;
+        font-size: 2em;
+        font-weight: 700;
+        font-family: 'Comfortaa', 'Arial', sans-serif;
+
+        a.btn {
+            display: none;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: auto;
+            line-height: 2.8rem;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: .15rem;
+            text-decoration: none;
+
+            & > i.fa {
+                font-size: 1.4rem;
+                margin-right: .25rem;
+            }
+        }
+    }
+
+    & > nav[role="navigation"] {
+        margin-top: 3rem;
+
+        & > a {
+            font-size: 1.4rem;
+            display: block;
+            color: #ffffff;
+            padding: 1rem;
+            margin-bottom: .5rem;
+            text-decoration: none;
+            border-radius: 3px;
+            transition: ease 300ms;
+
+            &:hover {
+                background-color: #3575b5;
+            }
+
+            &.active,
+            &.active:hover {
+                background-color: #4b84bd;
+                color: #ffffff;
+            }
+        }
+    }
+}
+
+main[role="main"] {
+    padding: 2rem 3rem 5rem;
+
+    p {
+        text-align: justify;
+        line-height: 2.1rem;
+        hyphens: auto;
+    }
+
+    /*
+     * Ajusta o peso da fonte para elementos que usam negrito.
+     */
+    table th,
+    label {
+        font-weight: 500;
+    }
+
+    #pnLogin > .panel-body > .form {
+        padding: 0 3rem;
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        #lnkEsqueciSenha {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+}
+
+input.form-control {
+    box-shadow: none;
+}
+
+.studyplan {
+    overflow: hidden;
+
+    h2.studyplan-heading {
+        margin-bottom: 0;
+    }
+
+    table.studyplan-table {
+        border-bottom: 1px solid #ddd;
+
+        & > tr:first-child > td,
+        & > tbody > tr:first-child > td {
+            border-top: none;
+        }
+
+        tr.finished > td,
+        tr.finished > th {
+            color: #999;
+            text-decoration: line-through;
+        }
+    }
+
+    .studyplan-btns > .btn-group > a.btn-link {
+        color: #777;
+    }
+
+    .labels > .label {
+        display: inline-block;
+    }
+}
+
+@media (max-width: 960px) {
+    body {
+        margin-left: 0;
+        margin-top: 3.5rem;
+
+        &.sidebar-open {
+            aside.sidebar {
+                left:  0;
+
+                & > header {
+                    left: 20rem;
+                }
+            }
+        }
+    }
+
+    aside.sidebar {
+        left: -20rem;
+
+        & > header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: auto;
+            width: auto;
+            height: auto;
+            background-color: inherit;
+            box-shadow: 1px 0 1px 0px #000;
+            transition: ease 500ms;
+
+            & > a.btn {
+                display: block;
+            }
+        }
+    }
+
+    main[role="main"] {
+        #pnLogin > .panel-body > .form {
+            padding: 0;
+        }
+    }
+}
