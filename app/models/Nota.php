@@ -14,6 +14,9 @@
  */
 class Nota extends XModel {
 
+	const SIT_PARTICULAR = 0;
+	const SIT_PUBLICO = 1;
+
     public $tableName = 'notas';
 
     /**
