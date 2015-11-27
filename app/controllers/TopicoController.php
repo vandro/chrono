@@ -22,7 +22,7 @@ class TopicoController {
     
     public function actionEditar($id) {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
 
             $editarTopico = Topico::model()->findByPk($id);
             $editarTopico->topico = $this->request->getPost('topico');
@@ -42,7 +42,7 @@ class TopicoController {
     
     public function actionCadastrar() {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
             $cadastrarTopico = new Topico;
             $cadastrarTopico->topico = $this->request->getPost('topico');
             $cadastrarTopico->save();

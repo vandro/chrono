@@ -14,7 +14,7 @@ class AgendaController {
     
     public function actionEditar($id) {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
 
             $editarAgenda = Agenda::model()->findByPk($id);
             $editarAgenda-> agenda = $this->request->getPost('agenda');
@@ -34,7 +34,7 @@ class AgendaController {
     
     public function actionCadastrar() {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
             $cadastrarAgenda = new Agenda;
             $cadastrarAgenda-> agenda = $this->request->getPost('agenda');
             $cadastrarAgenda->save();

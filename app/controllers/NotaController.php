@@ -22,7 +22,7 @@ class NotaController {
     
     public function actionEditar($id) {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
 
             $editarNota = Nota::model()->findByPk($id);
             $editarNota-> nota = $this->request->getPost('nota');
@@ -42,7 +42,7 @@ class NotaController {
     
     public function actionCadastrar() {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
             $cadastrarNota = new Nota;
             $cadastrarNota-> nota = $this->request->getPost('nota');
             $cadastrarNota->save();

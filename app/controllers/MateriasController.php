@@ -22,7 +22,7 @@ class MateriasController {
     
     public function actionEditar($id) {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
 
             $editarMateria = Materia::model()->findByPk($id);
             $editarMateria-> materia = $this->request->getPost('materia');
@@ -42,7 +42,7 @@ class MateriasController {
     
     public function actionCadastrar() {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
             $cadastrarMateria = new Materia;
             $materia->titulo = $this->request->getPost('titulo');
             $materia->usuario_id = $this-> user-> id;

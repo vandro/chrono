@@ -22,7 +22,7 @@ class TagController {
     
     public function actionEditar($id) {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
 
             $editarTag = Tag::model()->findByPk($id);
             $editarTag-> tag = $this->request->getPost('tag');
@@ -42,7 +42,7 @@ class TagController {
     
     public function actionCadastrar() {
 
-        if ($this->request->isPost) {
+        if ($this->request->isPostRequest) {
             $cadastrarTag = new Tag;
             $cadastrarTag-> tag = $this->request->getPost('tag');
             $cadastrarTag-> save();
