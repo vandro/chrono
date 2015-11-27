@@ -11,6 +11,7 @@
  *
  * @author Emanuel
  */
+?>
 class cadastrousuario {
 <body class="blog">
 	<div class="site-wrap">

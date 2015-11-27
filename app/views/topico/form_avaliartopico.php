@@ -5,6 +5,7 @@
  *
  * @author Emanuel
  */
+?>
 class form_avaliartopico {
     <body><center>
 <h2>Formulário</h2>

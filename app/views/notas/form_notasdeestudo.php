@@ -10,6 +10,7 @@
  *
  * @author Emanuel Lucena <elucena94@gmail.com>
  */
+?>
 class notasdeestudo {
 <body class="archive author author-emanuellucena">
 	<div class="site-wrap">
