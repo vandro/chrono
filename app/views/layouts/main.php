@@ -25,12 +25,12 @@ $this->clientScript
                    aria-label="Menu"><i class="fa fa-bars"></i><span class="sr-only">Menu</span></a>
             </header>
             <nav role="navigation">
-                <a href="pages/login.html" data-page="login">Login</a>
-                <a href="pages/register.html" data-page="register">Cadastro de usuário</a>
-                <a href="pages/program.html" data-page="materias">Conteúdo programático</a>
-                <a href="pages/table.html" data-page="table">Tabela</a>
+                <a href="/usuario/login">Login</a>
+                <a href="/usuario/cadastrar">Cadastro de usuário</a>
+                <a href="/materias/listar">Conteúdo programático</a>
+<!--                <a href="pages/table.html" data-page="table">Tabela</a>
                 <a href="pages/typo.html" data-page="typo">Tipografia</a>
-                <a href="pages/elements.html" data-page="elements">Outros Elementos</a>
+                <a href="pages/elements.html" data-page="elements">Outros Elementos</a>-->
             </nav>
         </aside>
 

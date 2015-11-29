@@ -38,4 +38,10 @@ class Topico extends XModel {
         ];
     }
 
+    public function rules() {
+        return [
+            ['titulo,materia_id,dif_esperada', 'required'],
+        ];
+    }
+
 }

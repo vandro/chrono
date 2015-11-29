@@ -9,9 +9,9 @@ class MateriasController extends XController {
     
     public function actionListar() {
         $this->desligarLog();
-        $listarMateria = Materia::model()->findAll();
+        $materias = Materia::model()->findAll(['order' => 't.titulo']);
         $this->render('listarMateria', [
-            'materia' => $listarMateria
+            'materias' => $materias
         ]);
     }
 
@@ -41,18 +41,23 @@ class MateriasController extends XController {
     }
     
     public function actionCadastrar() {
-
+        $urlRetorno = ['materias/listar'];
         if ($this->request->isPostRequest) {
-            $cadastrarMateria = new Materia;
-            $materia-> titulo = $this->request->getPost('titulo');
-            $materia-> usuario_id = $this-> user-> id;
-            $materia-> dt_criacao = date('Y-m-d');
-            if ($cadastrarMateria-> save()){
+            $materia = new Materia;
+            $materia->titulo = $this->request->getPost('titulo');
+            $materia->usuario_id = 1; //$this->user->id;
+            $materia->dt_criacao = date('Y-m-d H:i:s');
+            if ($materia->save()){
+                $materia->refresh();
+                $urlRetorno['#'] = "materia-{$materia->id}";
                 $this->user->setFlash('success', 'Esta materia foi criada com sucesso.');
-                $this->redirect(['mateira/novaMateria']);
-            } else{
-                $this->user->setFlash('error', 'Error ao cadastrar esta materia, verifique se está tudo correto!');
+            } else {
+                $urlRetorno['#'] = "erroMateriaMsg";
+                $htmlErro = CHtml::errorSummary($materia, 'Erro ao cadastrar esta materia, verifique se está tudo correto!');
+                $this->user->setFlash('erroMateria', $htmlErro);
             }
+            $this->redirect($urlRetorno);
         }
+
     }
 }

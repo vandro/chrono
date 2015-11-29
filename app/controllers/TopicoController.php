@@ -5,7 +5,7 @@
  *
  * @author Charles Souza <charlessouzasalesjr@gmail.com>
  */
-class TopicoController {
+class TopicoController extends XController {
 
     public function actionListar() {
 
@@ -41,20 +41,24 @@ class TopicoController {
     }
 
     public function actionCadastrar() {
-
+        $urlRetorno = ['materias/listar'];
         if ($this->request->isPostRequest) {
-            $cadastrarTopico = new Topico;
-            $cadastrarTopico-> materia_id = $this->request->getPost('');
-            $cadastrarTopico-> titulo = $this->request->getPost('titulo');
-            $cadastrarTopico-> dif_esperada = $this->request->getPost('dif_esperada');
-            $cadastrarTopico-> dif_encontrada = $this->request->getPost('dif_encontrada');
-            $cadastrarTopico-> dt_criacao = date('Y-m-d');
-            if ($cadastrarTopico->save()) {
-                $this->user->setFlash('success', 'Este topico foi criado com sucesso.');
-                $this->redirect(['topico/novoTopico']);
-            } else { 
-                $this->user->setFlash('error', 'Error ao cadastrar este topico, verifique se está tudo correto!');
+            $topico = new Topico;
+            $topico->materia_id = $this->request->getPost('materia_id');
+            $topico->titulo = $this->request->getPost('titulo_topico');
+            $topico->dif_esperada = 'F'; //$this->request->getPost('dif_esperada');
+            $topico->dif_encontrada = null; //$this->request->getPost('dif_encontrada');
+            $topico->dt_criacao = date('Y-m-d H:i:s');
+            if ($topico->save()) {
+                $topico->refresh();
+                $urlRetorno['#'] = "topico-{$topico->id}";
+                $this->user->setFlash('success', 'Este tópico foi criado com sucesso.');
+            } else {
+                $urlRetorno['#'] = 'erroTopicoMsg';
+                $htmlErro = CHtml::errorSummary($topico, 'Error ao cadastrar este topico, verifique se está tudo correto!');
+                $this->user->setFlash("erroTopico{$topico->materia_id}", $htmlErro);
             }
+            $this->redirect($urlRetorno);
         }
     }
 
