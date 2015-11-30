@@ -1,0 +1,49 @@
+/* 
+    Created on : 29/11/2015, 23:51:02
+    Author     : Jonathan Souza <jonathan.ralison@gmail.com>
+*/
+
+::selection {
+    background-color: rgba(#e8eff6, .7);
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Maven Pro', 'Raleway', 'Roboto', 'Arial', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #434343;
+    margin-left: 20rem;
+    transition: ease 500ms;
+    background-color: #f2f2f2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: .1rem solid #e7e7e7;
+    margin-bottom: 1.5em; // Relativo ao tamanho da fonte do cabeçalho
+    line-height: 1.5;
+}
+
+h1, h2, h3 {
+    font-family: 'Comfortaa', 'Arial', sans-serif;
+    font-weight: 300;
+}
+
+h4, h5, h6 {
+    font-family: 'Maven Pro', 'Arial', sans-serif;
+    font-weight: 500;
+}
+
+h6 {
+    font-weight: 400;
+}
+
+table {
+    td.collapsing,
+    th.collapsing {
+        width: 1%;
+    }
+}

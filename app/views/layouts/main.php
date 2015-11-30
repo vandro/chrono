@@ -3,9 +3,8 @@
 $this->clientScript
         ->registerPackage('normalize')
         ->registerCssFile('https://fonts.googleapis.com/css?family=Comfortaa:300,700|Maven+Pro:400,500')
-        ->registerCssFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
-        ->registerCssFile('https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
-        ->registerCssFile(Yii::app()->baseUrl . '/build/css/chrono.css')
+        ->registerCssFile(Yii::app()->baseUrl . '/assets/bootstrap/dist/css/bootstrap.min.css')
+        ->registerCssFile(Yii::app()->baseUrl . '/assets/font-awesome/css/font-awesome.min.css')
         ->registerCssFile(Yii::app()->baseUrl . '/build/css/chrono.css')
         ->registerScriptFile(Yii::app()->baseUrl . '/build/js/chrono.js');
 ?>

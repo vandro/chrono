@@ -32,6 +32,8 @@
   ],
   "dependencies": {
     "open-iconic": "~1.1.1",
-    "normalize-css": "~3.0.3"
+    "normalize-css": "~3.0.3",
+    "bootstrap": "~3.3.6",
+    "font-awesome": "fontawesome#~4.5.0"
   }
 }

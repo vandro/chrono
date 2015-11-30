@@ -8,9 +8,11 @@
  * @property int $materia_id
  * @property string $titulo
  * @property string $dt_criacao
+ * @property string $dt_conclusao
  * @property char $dif_esperada
  * @property char $dif_encontrada
  * @property Materia $materia
+ * @property Tag[] $tags
  * @author Jonathan Souza <jonathan.ralison@gmail.com>
  */
 class Topico extends XModel {
@@ -34,6 +36,7 @@ class Topico extends XModel {
      */
     public function relations() {
         return [
+            'materia' => [self::BELONGS_TO, 'Materia', 'materia_id'],
             'tags' => [self::MANY_MANY, 'Tag', 'tags_topicos(tag_id, topico_id)'],
         ];
     }

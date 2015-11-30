@@ -2,11 +2,11 @@
 
 return [
     'normalize' => [
-        'baseUrl' => '/vendor/normalize-css',
+        'baseUrl' => '/assets/normalize-css',
         'css' => ['normalize.css'],
     ],
     'open-iconic' => [
-        'baseUrl' => '/vendor/open-iconic/font/css',
+        'baseUrl' => '/assets/open-iconic/font/css',
         'css' => [YII_DEBUG ? 'open-iconic.css' : 'open-iconic.min.css'],
     ],
 ];

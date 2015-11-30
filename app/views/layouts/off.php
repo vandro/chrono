@@ -3,8 +3,8 @@
 $this->clientScript
         ->registerPackage('normalize')
         ->registerPackage('open-iconic')
-        ->registerCssFile('/build/css/style.css')
-        ->registerCssFile('https://fonts.googleapis.com/css?family=Poiret+One');
+        ->registerCssFile('/build/css/off.css')
+        ->registerCssFile('https://fonts.googleapis.com/css?family=Comfortaa:300');
 ?>
 <!DOCTYPE html>
 <html>

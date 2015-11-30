@@ -1,48 +1,6 @@
 @import '_cores';
 
-::selection {
-    background-color: rgba(#e8eff6, .7);
-}
-
-html {
-    font-size: 62.5%;
-}
-
-body {
-    font-family: 'Maven Pro', 'Raleway', 'Roboto', 'Arial', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: #434343;
-    margin-left: 20rem;
-    transition: ease 500ms;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    border-bottom: 1px solid #e7e7e7;
-    margin-bottom: 1.5em; // Relativo ao tamanho da fonte do cabeçalho
-    line-height: 1.5;
-}
-
-h1, h2, h3 {
-    font-family: 'Comfortaa', 'Arial', sans-serif;
-    font-weight: 300;
-}
-
-h4, h5, h6 {
-    font-family: 'Maven Pro', 'Arial', sans-serif;
-    font-weight: 500;
-}
-
-h6 {
-    font-weight: 400;
-}
-
-table {
-    td.collapsing,
-    th.collapsing {
-        width: 1%;
-    }
-}
+@import '_base';
 
 aside.sidebar {
     position: fixed;
@@ -98,8 +56,8 @@ aside.sidebar {
             padding: 1rem;
             margin-bottom: .5rem;
             text-decoration: none;
-            border-radius: 3px;
-            transition: ease 300ms;
+            border-radius: .3rem;
+            transition: all 300ms ease;
 
             &:hover {
                 background-color: #3575b5;
@@ -116,12 +74,6 @@ aside.sidebar {
 
 main[role="main"] {
     padding: 2rem 3rem 5rem;
-
-    p {
-        text-align: justify;
-        line-height: 2.1rem;
-        hyphens: auto;
-    }
 
     /*
      * Ajusta o peso da fonte para elementos que usam negrito.
@@ -144,42 +96,25 @@ main[role="main"] {
         }
     }
 
+    .alert {
+        border-radius: 0;
+        margin: 0 -1rem;
+        font-size: 1.6rem;
+        border-color: rgba(0, 0, 0, .12);
+
+        &.closing {
+            transition: all 1s;
+            opacity: 0;
+        }
+    }
+
 }
 
 input.form-control {
     box-shadow: none;
 }
 
-.studyplan {
-    overflow: hidden;
-
-    h2.studyplan-heading {
-        margin-bottom: 0;
-    }
-
-    table.studyplan-table {
-        border-bottom: 1px solid #ddd;
-
-        & > tr:first-child > td,
-        & > tbody > tr:first-child > td {
-            border-top: none;
-        }
-
-        tr.finished > td,
-        tr.finished > th {
-            color: #999;
-            text-decoration: line-through;
-        }
-    }
-
-    .studyplan-btns > .btn-group > a.btn-link {
-        color: #777;
-    }
-
-    .labels > .label {
-        display: inline-block;
-    }
-}
+@import '_studyplan';
 
 @media (max-width: 960px) {
     body {
@@ -209,7 +144,7 @@ input.form-control {
             width: auto;
             height: auto;
             background-color: inherit;
-            box-shadow: 1px 0 1px 0px #000;
+            box-shadow: .1rem 0 .1rem 0 #000;
             transition: ease 500ms;
 
             & > a.btn {

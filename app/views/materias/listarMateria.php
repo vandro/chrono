@@ -1,80 +1,122 @@
+<?php /* @var $this XController */ ?>
 <?php /* @var $materias Materia[] */ ?>
+<?php $icoApagar = '<i class="fa fa-fw fa-times fa-2x text-danger"></i>'; ?>
+
 <h1 class="sr-only">Conteúdo Programático</h1>
 
 <?php foreach ($materias as $materia) : ?>
     <div class="studyplan">
-        <h2 class="studyplan-heading" id="materia-<?= $materia->id ?>"><?= $materia->titulo ?></h2>
-        <table class="table table-hover studyplan-table">
-            <tbody>
-                <?php if (count($materia->topicos)) : ?>
+        <div class="studyplan-heading" id="materia-<?= $materia->id ?>">
+            <?= CHtml::beginForm(['materias/editar', 'id' => $materia->id], 'post') ?>
+            <div class="inline-edition">
+                <input type="text" name="titulo" value="<?= $materia->titulo ?>"
+                       class="form-control" maxlength="70" autocomplete="off"
+                       placeholder="Digite o nome da matéria&hellip;" tabindex="-1" required>
+                <input type="submit" value="Salvar" class="btn btn-default">
+            </div>
+            <?= CHtml::endForm() ?>
+            <div class="inline-controls">
+                <?= CHtml::link($icoApagar, ['materias/apagar', 'id' => $materia->id],
+                        ['class' => 'btn btn-link', 'data-confirm' => "Você quer mesmo apagar a matéria {$materia->titulo}?"]) ?>
+            </div>
+        </div>
+
+        <?php ob_start(); ?>
+        <?= CHtml::beginForm(['topico/cadastrar'], 'post', ['id' => '']) ?>
+        <div class="inline-edition">
+            <input type="hidden" name="materia_id" value="<?= $materia->id ?>">
+            <input type="text" name="titulo" value="" class="form-control"
+                   maxlength="140" autocomplete="off" tabindex="-1"
+                   placeholder="Clique e digite para adicionar um tópico em <?= $materia->titulo ?>&hellip;"
+                   required>
+            <input type="submit" value="Salvar" class="btn btn-default">
+        </div>
+        <?= CHtml::endForm() ?>
+        <?php $formNovoTopico = ob_get_clean(); ?>
+
+        <?php if (count($materia->topicos)) : ?>
+            <table class="table table-hover table-condensed studyplan-table">
+                <tbody>
                     <?php foreach ($materia->topicos as $topico) : ?>
-                        <tr id="topico-<?= $topico->id ?>">
-                            <td class="collapsing"><i class="fa fa-fw fa-square-o"></i></td>
-                            <td class="col-sm-10">
-                                <?= $topico->titulo ?>
+                    <tr id="topico-<?= $topico->id ?>"
+                        class="<?= isset($topico->dt_conclusao) ? 'finished' : '' ?>">
+                            <td class="collapsing">
+                                <?php $icoLinha = isset($topico->dt_conclusao) ? 'fa-check-square-o' : 'fa-square-o'; ?>
+                                <i class="fa fa-fw <?= $icoLinha ?>"></i>
                             </td>
-                            <td class="text-center studyplan-btns">
+                            <td class="col-sm-10">
+                                <?= CHtml::beginForm(['topico/editar', 'id' => $topico->id], 'post', ['id' => '']) ?>
+                                <div class="inline-edition">
+                                    <input type="hidden" name="materia_id" value="<?= $materia->id ?>">
+                                    <input type="text" name="titulo" value="<?= $topico->titulo ?>" class="form-control"
+                                           maxlength="140" autocomplete="off" tabindex="-1"
+                                           placeholder="Digite o título do tópico&hellip;"
+                                           required>
+                                    <input type="submit" value="Salvar" class="btn btn-default">
+                                </div>
+                                <?= CHtml::endForm() ?>
+                            </td>
+                            <td class="text-center studyplan-btns collapsing">
                                 <div class="btn-group btn-group-xs">
-                                    <a href="#" class="btn btn-link"><i class="fa fa-fw fa-arrows"></i></a>
-                                    <a href="#" class="btn btn-link"><i class="fa fa-fw fa-calendar-check-o"></i></a>
-                                    <a href="#" class="btn btn-link"><i class="fa fa-fw fa-times"></i></a>
+                                    <?= CHtml::link($icoApagar, ['topico/apagar', 'id' => $topico->id],
+                                            ['class' => 'btn btn-link', 'data-confirm' => "Você quer mesmo apagar o tópico {$topico->titulo}?"]) ?>
                                 </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                <?php else : ?>
+                </tbody>
+                <tfoot>
                     <tr>
-                        <td colspan="3" class="text-muted">
-                            Não há tópico cadastrado nesta matéria.
+                        <td colspan="3">
+                            <?= $formNovoTopico ?>
                         </td>
                     </tr>
+                </tfoot>
+            </table>
+        <?php else : ?>
+            <div class="studyplan-body">
+                <?php if (count($materias) === 1) : ?>
+                    <div class="container-fluid">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <p class="lead text-muted text-center">
+                                <i class="fa fa-graduation-cap fa-5x fa-fw"></i>
+                            </p>
+                            <p class="lead text-muted text-justify">
+                                A matéria <?= $materia->titulo ?> não possui conteúdo para estudo.
+                                Pegue já o programa de conteúdo do concurso ou prova que você
+                                está estudando e comece a cadastrá-lo aqui.
+                            </p>
+                        </div>
+                    </div>
                 <?php endif; ?>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">
-                        <?php if ($this->user->hasFlash("erroTopico{$materia->id}")) : ?>
-                            <div class="alert alert-danger" id="erroTopicoMsg">
-                                <?= $this->user->getFlash("erroTopico{$materia->id}") ?>
-                            </div>
-                        <?php endif; ?>
-                        <?= CHtml::beginForm(['topico/cadastrar'], 'post') ?>
-                        <?= CHtml::hiddenField('materia_id', $materia->id) ?>
-                        <div class="col-sm-11">
-                            <div class="form-group">
-                                <label for="titulo_topico" class="sr-only">Cadastrar tópico nesta matéria:</label>
-                                <input type="text" name="titulo_topico" id="titulo_topico" class="form-control"
-                                       placeholder="Cadastrar tópico em <?= $materia->titulo ?>">
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <input type="submit" value="+" class="btn btn-primary btn-block">
-                        </div>
-                        <?= CHtml::endForm() ?>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
+                <div class="clearfix">
+                    <?= $formNovoTopico ?>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endforeach; ?>
 
-<?= CHtml::beginForm(['materias/cadastrar'], 'post', ['class' => 'form-horizontal']) ?>
-<div class="container-fluid">
-    <div class="row">
-        <?php if ($this->user->hasFlash('erroMateria')) : ?>
-            <div class="alert alert-danger" id="erroMateriaMsg">
-                <?= $this->user->getFlash('erroMateria') ?>
-            </div>
-        <?php endif; ?>
-        <div class="col-sm-11">
-            <div class="form-group">
-                <label for="titulo" class="sr-only">Título da matéria</label>
-                <input type="text" name="titulo" id="pnome" class="form-control" placeholder="Nova matéria">
-            </div>
+<div class="studyplan">
+    <div class="studyplan-heading" id="materia-nova">
+        <?= CHtml::beginForm(['materias/cadastrar'], 'post', ['id' => '']) ?>
+        <div class="inline-edition">
+            <input type="text" name="titulo" value="" class="form-control"
+                   maxlength="70" autocomplete="off" placeholder="Clique e digite para adicionar uma matéria&hellip;"
+                   tabindex="-1" required>
+            <input type="submit" value="Salvar" class="btn btn-default">
         </div>
-        <div class="col-sm-1">
-            <input type="submit" value="+" class="btn btn-primary btn-block">
-        </div>
+        <?= CHtml::endForm() ?>
     </div>
+    <?php if (!count($materias)) : ?>
+        <div class="studyplan-body">
+            <p class="lead text-center text-muted">
+                <i class="fa fa-hand-peace-o fa-5x fa-fw"></i>
+                <br><br>
+                Olá! Vejo que o seu plano de estudos está bem vazio no momento.
+                <br>
+                Que tal começar adicionando uma nova matéria ao seu plano?
+            </p>
+        </div>
+    <?php endif; ?>
 </div>
-<?= CHtml::endForm() ?>

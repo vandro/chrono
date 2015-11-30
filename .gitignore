@@ -18,6 +18,10 @@ node_modules/
 # =========================
 nbproject/private/
 
+# Koala App
+# =========================
+koala-config.json
+
 # =========================
 # Operating System Files
 # =========================
