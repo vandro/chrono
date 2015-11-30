@@ -17,6 +17,9 @@
  */
 class Usuario extends XModel {
 
+    const SIT_ATIVO = 0x01;
+    const SIT_INATIVO = 0x00;
+
     public $tableName = 'usuarios';
     public $senha_confirma;
 
@@ -50,7 +53,8 @@ class Usuario extends XModel {
     public function rules() {
         return [
             ['pnome,snome,email,senha', 'filter', 'filter' => 'trim'],
-            ['pnome,snome,email,senha', 'required'],
+            ['pnome,snome', 'required'], // Sempre requerido
+            ['email,senha', 'required', 'on' => 'insert'], // Requerido para novos usuários
             ['email', 'email', 'message' => 'Informe um e-mail válido.'],
             ['email', 'unique', 'message' => 'O e-mail informado já está cadastrado.'],
             ['senha', 'length', 'min' => 5, 'tooShort' => 'Informe uma senha com, no mínimo, 5 caracteres.', 'skipOnError' => true],

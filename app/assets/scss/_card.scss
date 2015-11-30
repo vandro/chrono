@@ -1,0 +1,21 @@
+/* 
+    Created on : 30/11/2015, 15:07
+    Author     : Jonathan Souza <jonathan.ralison@gmail.com>
+*/
+
+.main-card {
+    background: #fff;
+    padding: 1rem 2rem 3rem;
+    margin: 0 -1rem;
+    border: 1px solid #ddd;
+
+    .table,
+    .panel {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    & > h1 {
+        margin-bottom: 2rem;
+    }
+}

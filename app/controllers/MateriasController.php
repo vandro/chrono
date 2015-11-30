@@ -8,7 +8,6 @@
 class MateriasController extends XController {
     
     public function actionListar() {
-        $this->desligarLog();
         $materias = Materia::model()->findAll(['order' => 't.titulo']);
         $this->render('listarMateria', [
             'materias' => $materias
@@ -52,7 +51,7 @@ class MateriasController extends XController {
         if ($this->request->isPostRequest) {
             $materia = new Materia;
             $materia->titulo = $this->request->getPost('titulo');
-            $materia->usuario_id = 1; //$this->user->id;
+            $materia->usuario_id = $this->user->id;
             $materia->dt_criacao = date('Y-m-d H:i:s');
             if ($materia->save()){
                 $materia->refresh();

@@ -30,6 +30,19 @@ class XController extends CController {
         return parent::init();
     }
 
+    public function filters() {
+        return [
+            'accessControl',
+        ];
+    }
+
+    public function accessRules() {
+        return [
+            ['allow', 'users' => ['@']],
+            ['deny', 'users' => ['*']],
+        ];
+    }
+
     protected function desligarLog() {
         foreach (Yii::app()->log->routes as $log) {
             $log->enabled = false;

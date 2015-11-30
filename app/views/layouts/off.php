@@ -46,9 +46,7 @@ $this->clientScript
         </div>
         <footer>
             <nav>
-                <?= CHtml::link('Entrar', ['usuario/login']) ?>
-                <?= CHtml::link('Cadastro', ['usuario/cadastrar']) ?>
-                <?= CHtml::link('Plano de Estudos', ['materias/listar']) ?>
+                <?= CHtml::link('Ir para a aplicação', ['materias/listar']) ?>
             </nav>
         </footer>
         <?= $this->renderPartial('/layouts/incl/piwik', null, true) ?>

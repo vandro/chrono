@@ -21,6 +21,12 @@
             </div>
         </div>
 
+        <?php if ($this->user->hasFlash("erroTopico{$materia->id}")) : ?>
+            <div class="alert alert-danger" id="erroTopicoMsg">
+                <?= $this->user->getFlash("erroTopico{$materia->id}") ?>
+            </div>
+        <?php endif; ?>
+
         <?php ob_start(); ?>
         <?= CHtml::beginForm(['topico/cadastrar'], 'post', ['id' => '']) ?>
         <div class="inline-edition">
@@ -108,15 +114,31 @@
         </div>
         <?= CHtml::endForm() ?>
     </div>
-    <?php if (!count($materias)) : ?>
+
+    <?php
+    $bMostraDica = (count($materias) === 0);
+    $bTemFlash = ($this->user->hasFlash('erroMateria'));
+
+    if ($bMostraDica || $bTemFlash) :
+        ?>
         <div class="studyplan-body">
-            <p class="lead text-center text-muted">
-                <i class="fa fa-hand-peace-o fa-5x fa-fw"></i>
-                <br><br>
-                Olá! Vejo que o seu plano de estudos está bem vazio no momento.
-                <br>
-                Que tal começar adicionando uma nova matéria ao seu plano?
-            </p>
+            <?php if ($bTemFlash) : ?>
+                <div class="alert alert-danger" id="erroMateriaMsg">
+                    <?= $this->user->getFlash('erroMateria') ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($bMostraDica) : ?>
+                <p class="lead text-center text-muted">
+                    <i class="fa fa-hand-peace-o fa-5x fa-fw"></i>
+                    <br><br>
+                    Olá! Vejo que o seu plano de estudos está bem vazio no momento.
+                    <br>
+                    Que tal começar adicionando uma nova matéria ao seu plano?
+                </p>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
+        <?php
+    endif;
+    ?>
 </div>

@@ -2,6 +2,8 @@
 
 @import '_base';
 
+@import '_card';
+
 aside.sidebar {
     position: fixed;
     top: 0;
@@ -69,6 +71,12 @@ aside.sidebar {
                 color: #ffffff;
             }
         }
+
+        & > hr {
+            display: block;
+            border-color: #4b84bd;
+            margin: 1rem 0;
+        }
     }
 }
 
@@ -83,22 +91,30 @@ main[role="main"] {
         font-weight: 500;
     }
 
-    #pnLogin > .panel-body > .form {
-        padding: 0 3rem;
+    #pnLogin {
+        max-width: 60rem;
+        margin: 0 auto;
 
-        .form-group {
-            margin-bottom: 1rem;
-        }
+        & > .panel-body > .form {
+            padding: 0 3rem;
 
-        #lnkEsqueciSenha {
-            padding-left: 0;
-            padding-right: 0;
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            #lnkEsqueciSenha {
+                padding-left: 0;
+                padding-right: 0;
+            }
         }
+    }
+
+    .panel-footer {
+        overflow-x: hidden;
     }
 
     .alert {
         border-radius: 0;
-        margin: 0 -1rem;
         font-size: 1.6rem;
         border-color: rgba(0, 0, 0, .12);
 
@@ -106,6 +122,11 @@ main[role="main"] {
             transition: all 1s;
             opacity: 0;
         }
+    }
+
+    small,
+    .small {
+        font-size: 1rem;
     }
 
 }

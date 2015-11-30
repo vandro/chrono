@@ -10,6 +10,7 @@ return [
     'basePath' => APP_ROOT,
     'timeZone' => 'America/Recife',
     'language' => 'pt_br',
+    'defaultController' => 'materias',
     'import' => [
         'application.components.*',
         'application.models.*',
@@ -58,6 +59,9 @@ return [
         'errorHandler' => [
             'adminInfo' => 'a equipe de desenvolvimento',
             'errorAction' => YII_DEBUG ? null : 'default/error',
+        ],
+        'user' => [
+            'loginUrl' => ['usuario/login'],
         ],
     ],
 ];

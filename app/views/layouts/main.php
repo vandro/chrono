@@ -24,12 +24,15 @@ $this->clientScript
                    aria-label="Menu"><i class="fa fa-bars"></i><span class="sr-only">Menu</span></a>
             </header>
             <nav role="navigation">
-                <a href="/usuario/login">Login</a>
-                <a href="/usuario/cadastrar">Cadastro de usuário</a>
-                <a href="/materias/listar">Conteúdo programático</a>
-<!--                <a href="pages/table.html" data-page="table">Tabela</a>
-                <a href="pages/typo.html" data-page="typo">Tipografia</a>
-                <a href="pages/elements.html" data-page="elements">Outros Elementos</a>-->
+                <?php if ($this->user->isGuest) : ?>
+                    <?= CHtml::link('Login', ['usuario/login']) ?>
+                    <?= CHtml::link('Cadastrar-se', ['usuario/cadastrar']) ?>
+                <?php else : ?>
+                    <?= CHtml::link('Plano de Estudos', ['materias/listar']) ?>
+                    <hr>
+                    <?= CHtml::link('Seu cadastro', ['usuario/editar']) ?>
+                    <?= CHtml::link('Sair', ['usuario/logout']) ?>
+                <?php endif; ?>
             </nav>
         </aside>
 
@@ -44,6 +47,12 @@ $this->clientScript
             <?php if ($this->user->hasFlash('error')) : ?>
                 <div class="alert alert-danger">
                     <?= $this->user->getFlash('error') ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($this->user->hasFlash('info')) : ?>
+                <div class="alert alert-info">
+                    <?= $this->user->getFlash('info') ?>
                 </div>
             <?php endif; ?>
 

@@ -27,6 +27,14 @@ class Materia extends XModel {
         return parent::model($className);
     }
 
+    public function defaultScope() {
+        $t = $this->getTableAlias(false, false);
+        return [
+            'condition' => "{$t}.usuario_id = :uid",
+            'params' => [':uid' => Yii::app()->user->id],
+        ];
+    }
+
     /**
      * Define os relacionamentos deste modelo com os demais no banco de dados.
      * 
@@ -45,10 +53,10 @@ class Materia extends XModel {
             ['titulo', 'filter', 'filter' => 'trim'],
             ['titulo', 'unique', 'criteria' => [
                 'condition' => 'usuario_id = :uid',
-                'params' => [':uid' => 1],
+                'params' => [':uid' => Yii::app()->user->id],
             ], 'message' => 'Você já criou uma matéria com este nome.'],
             ['dt_criacao', 'default', 'value' => new CDbExpression('NOW()'), 'setOnEmpty' => true],
-            ['usuario_id', 'default', 'value' => 1, 'setOnEmpty' => true], // Temporário até a criação dos usuários
+            ['usuario_id', 'default', 'value' => Yii::app()->user->id, 'setOnEmpty' => true], // Temporário até a criação dos usuários
         ];
     }
 
