@@ -49,14 +49,14 @@ class Materia extends XModel {
 
     public function rules() {
         return [
+            ['usuario_id', 'default', 'value' => Yii::app()->user->id, 'setOnEmpty' => true],
             ['titulo', 'required'],
             ['titulo', 'filter', 'filter' => 'trim'],
             ['titulo', 'unique', 'criteria' => [
                 'condition' => 'usuario_id = :uid',
-                'params' => [':uid' => Yii::app()->user->id],
+                'params' => [':uid' => $this->usuario_id],
             ], 'message' => 'Você já criou uma matéria com este nome.'],
             ['dt_criacao', 'default', 'value' => new CDbExpression('NOW()'), 'setOnEmpty' => true],
-            ['usuario_id', 'default', 'value' => Yii::app()->user->id, 'setOnEmpty' => true], // Temporário até a criação dos usuários
         ];
     }
 

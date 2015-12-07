@@ -8,6 +8,8 @@ web/vendor/*
 !web/vendor/.gitkeep
 web/build/*
 !web/build/.gitkeep
+app/configs/database.php
+app/configs/databaseTest.php
 
 # Node
 # =========================
@@ -68,4 +70,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-/app/configs/database.php
